@@ -1,0 +1,21 @@
+main0 = 0x1337d00d
+sub mynum and main0    //sub==0x12  mynum==0d322424827
+sub is compared with 0x15
+if sub is grater than 0x15:
+    nothing intresting
+
+else:
+    sub is shifted to left by 2 bits
+    add 0x8048d30 to it
+    the above 2 steps are irrelevent
+
+    now we pass actual sub to decrypt:
+        decrypt0 = 0x757c7d51
+        decrypt1 = 0x67667360
+        decrypt2 = 0x7b66737e
+        decrypt3 = 0x33617c7d
+        do strlen of decrypt1 and set i = 0
+        for i < strlen:
+            add i and decryptX
+            xor actual sub and lower byte of above addition after each itteration next byte are takenfor xoring
+        after completion it is compared with ascii string "Congratulations!"

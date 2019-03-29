@@ -1,0 +1,1 @@
+in main function Pssword is compared with 0x149a if it matches then shell is spawned otherwise it prints Invalid Password and exits

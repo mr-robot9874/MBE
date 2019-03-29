@@ -1,0 +1,26 @@
+Main function:
+    call to fgets for "username" with limit of 0x20
+    call to scanf for "serial"
+    both are passed as arguments to the Function Auth
+
+Auth Function:
+    if length of "username" < 0x5 || "username" > 0x20:
+        return without shell :(
+
+    else:
+        sys call to ptrace to detect if debugger is running but implemented poorly so we can manually set $eip to bypass ptrace call
+        then, 4 the byte is xored with 0x1337 and 0x5eeded is added to it. let's say it "seed"
+        
+        for i=0 to i < strlen of "username":
+            makes sure that each single charecter in "username" is greater than 0x1f
+            each byte of "username" is xored with "seed" multiplied by 0x88233b2b  // this is unsigned mul
+            multiplication is subtracted from xor and shifted to right by 0x1 place add multiplication shift right by 0xa place
+            then it is multiplied by 0x539 // this is a signed imul
+            then it is addto the seed value and for sure i is incremented
+        
+        after completing the for loop whatever that is, is compared with "serial" and if they are equal you get shell :) 
+
+
+
+username = ZZZZZZ
+serial = 6232848 
